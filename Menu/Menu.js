@@ -9,6 +9,23 @@ let menuItems = [
   'Log Out'
 ];
 
+function menuComponent(arr) {
+  const div = document.createElement('div');
+  div.classList.add('menu');
+  const ul = document.createElement('ul');
+  div.appendChild(ul);
+  let li = document.createElement('li');
+  arr.map(items => {
+    li.textContent = items;
+  });
+  ul.appendChild(li);
+
+  return div;
+}
+
+const navSection = menuComponent(menuItems);
+console.log(navSection);
+
 /* 
 
   Step 1: Write a function that will create a menu component as seen below:
