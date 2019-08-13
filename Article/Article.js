@@ -95,6 +95,7 @@ function articleComponent(obj) {
   const firstParagraph = document.createElement('p');
   const secondParagraph = document.createElement('p');
   const thirdParagraph = document.createElement('p');
+  const spanEl = document.createElement('span');
 
   div.classList.add('article');
 
@@ -107,6 +108,18 @@ function articleComponent(obj) {
 
   firstParagraph.textContent = obj.firstParagraph;
   div.appendChild(firstParagraph); // add first par. to div.
+
+  secondParagraph.textContent = obj.secondParagraph;
+  div.appendChild(secondParagraph); // add 2nd par. to div.
+
+  thirdParagraph.textContent = obj.thirdParagraph;
+  div.appendChild(thirdParagraph);
+
+  spanEl.classList.add('expandButton');
+  spanEl.addEventListener('click', event => {
+    const div = document.querySelector('.article');
+    div.classList.toggle('article-open');
+  });
   console.log(div);
 }
 
