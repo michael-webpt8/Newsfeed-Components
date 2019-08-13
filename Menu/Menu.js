@@ -13,19 +13,26 @@ function menuComponent(arr) {
   const div = document.createElement('div');
   div.classList.add('menu');
   const ul = document.createElement('ul');
-  div.appendChild(ul);
+
   let li = document.createElement('li');
   arr.map(items => {
     li.textContent = items;
   });
   ul.appendChild(li);
-
+  div.appendChild(ul);
   return div;
 }
+const comp = menuComponent(menuItems);
+console.log('component', comp);
+/**??? so does this go inside the component  ???*/
+const menuButton = document.querySelector('.menu-button');
+menuButton.addEventListener('click', event => {
+  menuButton.classList.toggle('menu--open');
+});
+//*??? question   ???**/
 
-const navSection = menuComponent(menuItems);
-console.log(navSection);
-
+const menu = document.querySelector('.menu-button');
+menu.append(div);
 /* 
 
   Step 1: Write a function that will create a menu component as seen below:
