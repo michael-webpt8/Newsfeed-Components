@@ -15,24 +15,41 @@ function menuComponent(arr) {
   const ul = document.createElement('ul');
 
   let li = document.createElement('li');
-  arr.map(items => {
-    li.textContent = items;
-  });
+  li.textContent = arr;
   ul.appendChild(li);
   div.appendChild(ul);
+
+  const menu = document.querySelector('.menu-button');
+  menu.addEventListener('click', event => {
+    event.target.classList.toggle('menu--open');
+  });
   return div;
 }
-const comp = menuComponent(menuItems);
-console.log('component', comp);
-/**??? so does this go inside the component  ???*/
-const menuButton = document.querySelector('.menu-button');
-menuButton.addEventListener('click', event => {
-  menuButton.classList.toggle('menu--open');
+
+// const menuButton = document.querySelector('.menu-button');
+// menuButton.addEventListener('click', event => {
+//   menuButton.classList.toggle('menu--open');
+// });
+
+const menuComponents = menuItems.map(menuItem => {
+  return menuComponent(menuItem);
 });
-//*??? question   ???**/
 
 const menu = document.querySelector('.menu-button');
-menu.append(div);
+
+menuComponents.forEach(menuItem => {
+  console.log(menuItem);
+  menu.append(menuItem);
+});
+
+// menu.addEventListener('click', event => {
+//   event.target.classList.toggle('menu--open');
+//   const menuOpen = document.querySelector('.menu--open');
+//   console.log(menuOpen);
+//   const menuButton = document.querySelector('.menu-button');
+//   menuButton.append(menuComponents);
+// });
+
 /* 
 
   Step 1: Write a function that will create a menu component as seen below:
