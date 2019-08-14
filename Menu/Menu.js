@@ -21,15 +21,11 @@ function menuComponent(arr) {
 
   const menu = document.querySelector('.menu-button');
   menu.addEventListener('click', event => {
-    event.target.classList.toggle('menu--open');
+    div.classList.toggle('menu--open');
+    console.log('toggle', div);
   });
   return div;
 }
-
-// const menuButton = document.querySelector('.menu-button');
-// menuButton.addEventListener('click', event => {
-//   menuButton.classList.toggle('menu--open');
-// });
 
 const menuComponents = menuItems.map(menuItem => {
   return menuComponent(menuItem);
@@ -41,14 +37,6 @@ menuComponents.forEach(menuItem => {
   console.log(menuItem);
   menu.append(menuItem);
 });
-
-// menu.addEventListener('click', event => {
-//   event.target.classList.toggle('menu--open');
-//   const menuOpen = document.querySelector('.menu--open');
-//   console.log(menuOpen);
-//   const menuButton = document.querySelector('.menu-button');
-//   menuButton.append(menuComponents);
-// });
 
 /* 
 
