@@ -118,13 +118,10 @@ function articleComponent(obj) {
   spanEl.classList.add('expandButton');
   spanEl.textContent = 'expand';
   spanEl.addEventListener('click', event => {
-    const div = document.querySelector('.article');
     div.classList.toggle('article-open');
   });
 
   div.append(spanEl);
-
-  console.log(div);
 
   return div;
 }
