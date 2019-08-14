@@ -116,16 +116,28 @@ function articleComponent(obj) {
   div.appendChild(thirdParagraph);
 
   spanEl.classList.add('expandButton');
+  spanEl.textContent = 'expand';
   spanEl.addEventListener('click', event => {
     const div = document.querySelector('.article');
     div.classList.toggle('article-open');
   });
+
+  div.append(spanEl);
+
   console.log(div);
+
+  return div;
 }
 
-const article = articleComponent(data[0]);
+const articlecomponents = data.map(article => {
+  return articleComponent(article);
+});
 
-console.log(article);
+const articles = document.querySelector('.articles');
+
+articlecomponents.forEach(article => {
+  articles.appendChild(article);
+});
 
 /* Step 1: Create a function that creates a component. You will want your component to look like the template below: 
   
