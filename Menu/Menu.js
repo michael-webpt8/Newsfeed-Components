@@ -9,36 +9,57 @@ let menuItems = [
   'Log Out'
 ];
 
-function menuComponent(arr) {
-  const div = document.createElement('div');
-  div.classList.add('menu');
-  const ul = document.createElement('ul');
+/**
+ * <div class="menu">
+    <ul>
+      {each menu item as a list item}
+    </ul>
+  </div>
+ */
 
-  let li = document.createElement('li');
-  li.textContent = arr;
-  ul.appendChild(li);
-  div.appendChild(ul);
+// function itemList(item) {
+//   const menuItem = document.createElement('li');
+//   menuItem.textContent = item;
+//   return menuItem;
+// }
 
-  const menu = document.querySelector('.menu-button');
-  menu.addEventListener('click', event => {
-    div.classList.toggle('menu--open');
-    console.log('toggle', div);
+function menuDisplay(menuArr) {
+  // const mItems = menuArr.map(menuItem => {
+  //   return itemList(menuItem);
+  // });
+
+  const menu = document.createElement('div');
+  menu.classList.add('menu');
+
+  const menuList = document.createElement('ul');
+
+  const lis = [];
+  let li;
+  for (let i = 0; i < menuArr.length; i++) {
+    li = document.createElement('li');
+    li.textContent = menuArr[i];
+    lis.push(li);
+  }
+
+  lis.forEach(listItem => {
+    menuList.appendChild(listItem);
   });
-  return div;
+  menu.appendChild(menuList);
+
+  const menuButton = document.querySelector('.menu-button');
+  menuButton.addEventListener('click', event => {
+    menu.classList.toggle('menu--open');
+    console.log(menu);
+  });
+
+  return menu;
 }
 
-const menuComponents = menuItems.map(menuItem => {
-  return menuComponent(menuItem);
-});
+const menu = menuDisplay(menuItems);
+const menuMount = document.querySelector('.header');
+menuMount.append(menu);
 
-const menu = document.querySelector('.menu-button');
-
-menuComponents.forEach(menuItem => {
-  console.log(menuItem);
-  menu.append(menuItem);
-});
-
-/* 
+/*
 
   Step 1: Write a function that will create a menu component as seen below:
 
