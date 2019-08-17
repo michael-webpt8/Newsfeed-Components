@@ -88,6 +88,54 @@ const data = [
   }
 ];
 
+function articleComponent(obj) {
+  const div = document.createElement('div');
+  const headerTwo = document.createElement('h2');
+  const datePar = document.createElement('p');
+  const firstParagraph = document.createElement('p');
+  const secondParagraph = document.createElement('p');
+  const thirdParagraph = document.createElement('p');
+  const spanEl = document.createElement('span');
+
+  div.classList.add('article');
+
+  headerTwo.textContent = obj.title;
+  div.append(headerTwo); // add h2 too the div.
+
+  datePar.classList.add('date');
+  datePar.textContent = obj.date;
+  div.appendChild(datePar); // add date par to div.
+
+  firstParagraph.textContent = obj.firstParagraph;
+  div.appendChild(firstParagraph); // add first par. to div.
+
+  secondParagraph.textContent = obj.secondParagraph;
+  div.appendChild(secondParagraph); // add 2nd par. to div.
+
+  thirdParagraph.textContent = obj.thirdParagraph;
+  div.appendChild(thirdParagraph);
+
+  spanEl.classList.add('expandButton');
+  spanEl.textContent = 'expand';
+  spanEl.addEventListener('click', event => {
+    div.classList.toggle('article-open');
+  });
+
+  div.append(spanEl);
+
+  return div;
+}
+
+const articlecomponents = data.map(article => {
+  return articleComponent(article);
+});
+
+const articles = document.querySelector('.articles');
+
+articlecomponents.forEach(article => {
+  articles.appendChild(article);
+});
+
 /* Step 1: Create a function that creates a component. You will want your component to look like the template below: 
   
   <div class="article">
